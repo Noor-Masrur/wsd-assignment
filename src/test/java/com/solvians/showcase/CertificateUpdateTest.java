@@ -3,6 +3,7 @@ package com.solvians.showcase;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CertificateUpdateTest {
@@ -48,6 +49,29 @@ class CertificateUpdateTest {
 
         assertTrue(certificateUpdate.getAskSize() >= 1000);
         assertTrue(certificateUpdate.getAskSize() <= 10000);
+    }
+
+    @Test
+    void certificate_update_to_be_formatted_as_comma_separated_line_with_six_component() {
+        CertificateUpdate certificateUpdate = new CertificateUpdate();
+
+        String[] components = certificateUpdate.toString().split(",");
+
+        assertEquals(6, components.length);
+    }
+
+    @Test
+    void certificate_update_sequence_of_components_is_correct() {
+        CertificateUpdate certificateUpdate = new CertificateUpdate();
+
+        String[] components = certificateUpdate.toString().split(",");
+
+        assertTrue(components[0].matches("\\d+"));
+        assertTrue(components[1].matches("[A-Z]{2}[A-Z0-9]{9}\\d"));
+        assertTrue(components[2].matches("\\d+\\.\\d{2}"));
+        assertTrue(components[3].matches("\\d+"));
+        assertTrue(components[4].matches("\\d+\\.\\d{2}"));
+        assertTrue(components[5].matches("\\d+"));
     }
 
 }

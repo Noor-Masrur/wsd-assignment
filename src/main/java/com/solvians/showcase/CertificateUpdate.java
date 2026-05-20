@@ -65,4 +65,9 @@ public class CertificateUpdate {
     private int randomBidSize() {
         return ThreadLocalRandom.current().nextInt(MIN_BID_SIZE, MAX_BID_SIZE+1);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d,%s,%.2f,%d,%.2f,%d", timestamp, isin, bidPrice, bidSize, askPrice, askSize);
+    }
 }
