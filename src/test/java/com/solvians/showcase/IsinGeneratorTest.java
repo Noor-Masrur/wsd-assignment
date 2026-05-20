@@ -45,4 +45,16 @@ class IsinGeneratorTest {
 
         assertEquals(6, checkDigit);
     }
+
+    @Test
+    void validate_generator_function_against_multiple_known_check_digit() {
+        int checkDigit = generator.calculateCheckDigit("US037833100");
+        assertEquals(5, checkDigit);
+
+        checkDigit = generator.calculateCheckDigit("IE00B4BNMY3");
+        assertEquals(4, checkDigit);
+
+        checkDigit = generator.calculateCheckDigit("DE000710000");
+        assertEquals(0, checkDigit);
+    }
 }
