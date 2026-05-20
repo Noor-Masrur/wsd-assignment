@@ -23,7 +23,7 @@ public class CertificateUpdateGenerator {
 
         try {
             List<Callable<CertificateUpdate>> tasks = new ArrayList<>();
-            for (int i =0; i< quotes; i++) {
+            for (int i =0; i< threads * quotes; i++) {
                 tasks.add(CertificateUpdate::new);
             }
 
